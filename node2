@@ -1,0 +1,120 @@
+1. CREATING SERVER IN NODE JS :
+
+	e.g.
+		const http = require("http");
+		const server = http.createServer((req, res) => {
+  		
+		res.writeHead(200, { "Content-Type": "text/plain" });
+		res.end("Hello world");
+		});
+
+		server.listen(3000, () => console.log("server up and running"));
+
+
+
+2. DISPLAY HTML IN RESPONSE OF REQUEST:
+		const http = require("http");
+		const server = http.createServer((req, res) => {
+  		
+		res.writeHead(200, { "Content-Type": "text/html" });
+		res.end("Hello world");
+		});
+
+		server.listen(3000, () => console.log("server up and running"));
+	
+	
+3. DISPLAY OBJECT IN RESPONSE:
+		const http = require("http");
+		const server = http.createServer((req, res) => {
+  		const obj = {
+    			fname: "Akshay",
+			lname: "Gawade",
+  		};
+		res.writeHead(200, { "Content-Type": "application/json" });
+		res.end(JSON.stringify(obj));
+		});
+
+		server.listen(3000, () => console.log("server up and running"));	
+		
+
+
+4.DISPLAY ANOTHER HTML FILE IN NODE JS AS RESPONSE : 
+	in index.html 
+	
+	<html>
+		<body>
+			<h3>Hello another file</h3>
+			
+		</body>
+	</html>
+	
+	
+	in index.js 
+	
+	const http=require("http");
+	const fs=require("fs")
+	const server=http.createServer((req, res)=>{
+		res.writeHead(200,{"Content-Type":"application/json"})
+		
+		const html=fs.readFileSync("./index.html","utf-8");
+		res.end(html)
+		//instead of above two lines we will write this single line 
+		
+		fs.createReadStream(__dirname+"./index.html").pipe(res)
+	})
+	
+	
+	server.listen(3000,()=>console.log("server up and running"))
+	
+	
+	
+	
+	
+	
+	
+	
+5. PASSING DATA FROM INDEX.JS TO INDEX.HTML
+	in index.html
+	
+	<html>
+		<body>
+			<h1>Hello {{name}}, WElcome to our page</h1>
+		</body>
+	</html>
+	
+	in index.js
+	
+	const http=require("http");
+	const fs=require("fs");
+	
+	const server=http.createServer((req, res)=>{
+		const name="Akshay";
+		res.writeHead(200, {"Content-Type":"text/html"})
+		let html=fs.readFileSync("./index.html", "utf-8");
+		html=html-replace("{{name}}", name);
+		res.end(html)
+	})
+
+	server.listen(3000,()=>console.log("Server up and running"))
+	
+	
+6 NODE ROUTING :
+	const server=http.createServer((req, res)=>{
+		if(req.url==="/"){
+			res.writeHead(200, {"Content-Type":"text/plain"})
+			res.end("Home page");
+		}
+		else if(req.url==="/about"){
+			res.writeHead(200, {"Content-Type":"text/plain"})
+			res.end("about page");
+		}
+		else{
+			res.writeHead(400)
+			res.end("Page not found");
+		}
+	})
+	
+	
+	NOTE : 
+		HERE ALSO WE HAVE req.method 
+	

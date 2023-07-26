@@ -1,0 +1,213 @@
+libuv:
+	libuv is a cross platform open source library written in C language.
+	it handles asynchronous non-blocking oprations in node js by using Thread pool, Event loop
+	
+	in index.js 
+	
+		const crypto = require("crypto")
+		const MAX_CALLS=5;
+		const start=Date.now();
+		for(let i=0;i<MAX_CALLS;i++){
+			crypto.pbkdf2("password", "salt", 1000000, 512, "sha512", ()=>{
+				console.log(`Hash: ${i+1}`, Date.now()-start)
+			})
+		}
+		
+		OUTPUT:
+			Hash: 4 270
+			Hash: 3 297
+			Hash: 2 297
+			Hash: 1 314
+			Hash: 5 531
+			
+		NOTE : it takes about double time for 5th execution , so libuv has by default 4 threads.
+			if we set 
+			process.env.UV_THREADPOOL_SIZE=5;
+			
+			THEN 5TH THREAD WILL TAKE SAME TIME, ALSO WE CAN INCREASE THIS NUMBER .
+			
+			
+			
+		
+		
+		
+USING HTTPS REQUEST:
+	in index.js 
+	
+	const https=require("https");
+	const MAX_CALLS=12;
+	const start=Date.now();
+	for(let i=0;i<MAX_CALLS;i++){
+		https.request("https://www.google.com", (res)=>{
+			res.on("data",()=>{});
+			res.on("end",()=>{
+				console.log(`Request ${i+1}`, Date.now()-start)
+			})
+		})
+		.end()
+	}
+	
+	
+	OUTPUT : 
+		 Request: 5 202
+		 Request: 6 206
+		 Request: 1 209
+		 Request: 3 207
+		 Request: 2 204
+		 Request: 4 206
+		 Request: 7 205
+		 Request: 8 206
+		 Request: 9 201
+		 Request: 10 206
+		 Request: 12 203
+		 Request: 11 206
+		 
+		 
+		THIS MEANS THAT  : 
+			1. https.request is a network input/output operation and not a CPU bound operation 
+			2. It does not use the thread pool.
+			
+			
+	
+CALL STACK : 
+	function greeting(){
+		//some code
+		sayhi();
+		//some code;
+	}	
+	function sayhi(){
+		return "hello";
+	}
+	greeting();
+	
+	NOTE :
+		first it will push greeting to the stack , and then it pushes sayhi function to the stack , after execution of sayhi, it will push sayhi to outside of the stack, all the variables inside sayhi function are destroyed, still greeting function is inside the stack, again after complete execution of greeting , this also push greeting function outside the stack.
+		
+		this is called as call stack.
+		
+		
+TASK QUEUE:
+	1. Javascript can do one thing at a time.
+	2. The rest are queued to the task queue waiting to be executed.
+	3. When we run setTimeout, webapis will run a timer and push the function provided to setTimeout to the task queue once the timer ends.
+	4. These tasks will be pushed to the stack where they can executed.
+	
+
+
+EVENT LOOP: 
+	1. Javascript has a runtime model based on an event loop, which is responsible for executing code, collecting and processing events and executing queued sub-tasks .
+	2. The event loop pushes the task from the task queue to the call stack.
+	3. setTimeout(func1, 0) can be used to defer (stop) a function until all the pending task have been executed.
+	 
+	 
+	 
+======================================><===============================================================
+MICROTASK QUEUE: 
+	console.log("first");
+	process.nextTick(()=>console.log("this is process.nextTick 1"))
+	console.log("second")
+	
+	O/P. : first	
+	       second
+	       this is process.nextTick 1
+	       
+	       
+	 e.g. 2 
+	 
+	 Promise.resolve().then(()=>console.log("this is Promise.resole 1"))
+	 process.nextTick(()=>console.log("this is process.nextTick 1 "))
+	 
+	 OP : this is process.nextTick 1
+	      this is process.nextTick 1
+	      
+	      
+	      NOTE : 
+	      	ALL CALLBACKS IN nextTick queue are executed before callbacks in promise queue.
+	      	
+	    
+	    
+	  e.g. 3 
+	        process.nextTick(()=>console.log("next tick 1"))
+		process.nextTick(()=>console.log("next tick 2"))
+		Promise.resolve().then(()=>console.log("promise 1"))
+		Promise.resolve().then(()=>console.log("promise 2"))
+		Promise.resolve().then(()=>{
+		    console.log("promise 2")
+		    process.nextTick(()=>console.log("next tick in promise 2"))
+		})
+		Promise.resolve().then(()=>console.log("promise 3"))
+		
+		
+		O/P: 
+			next tick 1
+			next tick 2
+			promise 1
+			promise 2
+			promise 2
+			promise 3
+			next tick in promise 2
+
+	    
+TIMER QUEUE: 
+		setTimeout(()=>console.log("first timeout"),0)
+		setTimeout(()=>console.log("second timeout"),0)
+		process.nextTick(()=>console.log("next tick 1"))
+		process.nextTick(()=>console.log("next tick 2"))
+		Promise.resolve().then(()=>console.log("promise 1"))
+		Promise.resolve().then(()=>console.log("promise 2"))
+		Promise.resolve().then(()=>{
+		    console.log("promise 2")
+		    process.nextTick(()=>console.log("next tick in promise 2"))
+		})
+		Promise.resolve().then(()=>console.log("promise 3"))
+		
+		
+		O/P: 
+			next tick 1
+			next tick 2
+			promise 1
+			promise 2
+			promise 2
+			promise 3
+			next tick in promise 2
+			first timeout 
+			second timeout
+			
+			
+	NOTE :
+		IF WE PASS 0 IN setTimeout then this call back function will execute after all code executed.
+		
+		
+		
+	      	
+IO QUEUE: 
+	 Callbakcs in the microtask queue are executed before callback in the IO Queue.
+	 
+	 const fs=require("fs");
+
+	 fs.readFile(__filename, ()=>{
+	 	console.log("this is readfile 1")
+	 })
+	 
+	 process.nextTick(()=>console.log("nextTick 1"))
+	 Promise.resolve.then(()=>console.log("this is promise resolve 1"))
+	 
+	 
+	 O/P: 
+	 	nextTick 1
+	 	this is promise resolve 1
+	 	this is readfile 1
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
