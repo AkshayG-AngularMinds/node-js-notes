@@ -1,0 +1,652 @@
+
+ 
+ ===========================================================================================================================================================
+ ================================================================================================================================
+ What is the purpose of the Map object in JavaScript? How is it different from a regular JavaScript object?0
+	Answer: The Map object in JavaScript is used to store key-value pairs where both the key and the value can be of any data type. It is different from a regular JavaScript object in that the keys in a Map can be objects or primitive data types, while in a regular object, keys are limited to strings or symbols.
+
+	Additionally, Map maintains the insertion order of its elements, making it more suitable for scenarios where order matters. It also provides helpful methods like size, forEach, and clear.
+
+
+
+
+====================================================================================================================================================================
+
+Explain the concept of event delegation in JavaScript.
+
+	Answer: Event delegation is a technique where instead of attaching an event listener to each individual element, you attach a single event listener to a parent element. The events are then handled based on the target (the element that triggered the event) and propagated up through the DOM tree.
+
+	This technique is useful when you have a large number of elements to which you want to attach the same event, as it reduces memory consumption and simplifies event management.
+ 
+ 
+ 
+ 
+ ==================================================================================================================================================================
+ 
+ 
+ let & const declarations are hoisted or not ? 
+ 	Answer: Yes , let and  const declarations are hoisted . This are in the temporal dead zone for time being . 
+		javascript compiler push the variable and declaration on top . S
+		e.g. 
+			if there are two variables, one is declared using var and another is declared using let .
+			
+			then var assigned value undefined in global scope. But let variable assigned value in script scope.
+			
+			It happens before execution of single line .
+			
+			==> that means hoisting is happens here also but in case of let and const it allocated space in script space not in global space.
+			
+			And in case of var it allocates memory in global space .
+
+ 		
+ 		
+==================================================================================================================================================================
+
+ TEMPORAL DEAD ZONE : 
+ 	Answer : 
+ 		it is the time since when the let variable is hoisted and till it is initialized some value .
+ 		Whenever you try to access variable inside temporal dead zone, it gives a reference error.
+ 		
+ 		
+ 		if we try to access var  variable using window object , then it is available in window object,
+ 		 but in case of let and const it should not available in window object.
+ 		 
+ 		 
+ 		 ==================================================================================================================================================================
+ 		 
+
+Syntax error , reference error and Type error : 
+	1. syntax error : 
+	
+		let a=10;
+		let a=10;+
+		
+		note : here we declare and define two let variables using same variable name . So it gives syntax error as 
+			'Identifier a has already been declared'
+			
+	 in case of let, 
+	 	let a;
+	 	a=10;
+	 	console.log(a);
+	 	
+	 	it is fine , means reinitialization of let variable is fine but in case of const variable it will give an error.	
+	 	
+	 
+	 	const b;
+	 	b=200;
+	 	
+	 	it must display syntax error as 
+	 		Missing initializer in const declaration.
+	 		
+	 		
+	 	
+	 	
+	 
+	 2. Type error : 
+	 	const a=10;
+	 	a=30;
+	 	
+	 	it will gives Type Error as 
+	 	Assignment to constant variable .
+	 	 		
+	 	 		
+	3. Reference error : 
+		console.log(a);
+		let a =10 ;
+
+		
+		then it will give an reference error as , 
+		 Can not access a before initaliazation .
+		 
+		 
+		 
+====================================================================================================================================================================
+
+block in javascript : 
+	 group of multiple statements can be used in a place where javascript expects a single statement.
+
+block scope : 
+	 block scope means what all variables and functions that are accessed inside block.
+	 e.g.
+	 
+	 {
+	 	var a=10;
+	 	let b=20;
+	 	const c=30;
+	 }
+	 
+	 Note: 
+	 	here a is hoisted in global scope  but b and c are hoisted in block scope. 
+	
+	
+	
+	
+Shadowing in javscript: 
+	 e.g.	
+	 
+	 	var a=100;
+	 	{
+	 		var a=10;
+	 		let b=20;
+	 		let c=230;
+	 		console.log(a);
+	 	}
+	 	console.log(a);
+
+	the value of a is changed, is called as shadowing in javascript.
+ 
+	 	
+	 	
+	 	
+	 NOTE : 
+	 	let a =10;
+	 	{
+	 		var a=20;
+	 	}
+
+		it will generate error . 
+		
+		
+		but if we write here  : 
+		let a=10;
+		{
+			let a=20;
+		}
+ 		 
+ 		then it is fine.
+ 		
+ 		
+ 		if we declare variable in function or inside block then it will not give error. 
+ 		
+ 		e.g. 
+ 			let a=20;
+ 			function x(){
+ 				var a=20;
+ 			}
+ 			
+ 			then it will not generate error.
+ 			
+ 			NOTE : SAME FOR THE CONST VARIABLES 
+ 		 
+ 		 
+ 		 
+ 
+ LEXICAL SCOPE: 
+ 	const a=10;
+	{
+ 	   const a=20;
+ 	   {
+  	      const a=39;
+    	    console.log(a)
+  	  }
+	}
+	
+	
+	
+	
+
+====================================================================================================================================================================
+
+CLOSURES : 
+	closure is a combination of functions and its lexical scope bundle together.
+	each and every functions in javascript has access to its outer lexical environment. Even if it is executed in other scope then also it remembers it outer lexical environment.
+	function x(){
+		var a=22;
+		function y(){
+			console.log(a);
+		} 		
+		y();
+	}
+	x();
+	
+	NOTE : 
+		when this code gets executed it must go to the y function and it should check for the a variable inside its local scope, if it is not available in local scope then it goes to its parent scope( i.e. lexical scope ).
+		
+		
+		
+	So function along with its lexical scope is called as closure.
+ 		 
+ 		 
+ 		 
+ 		 
+
+
+CLOSURE WITH SETTIMEOUT: 
+	function x(){
+		for(var i=1;i<=5;i++){
+			setTimeout(function(){
+				console.log(i);
+			})
+		}
+		
+		console.log("hello world");
+	}	
+	
+	
+	O/P:
+		hello world
+		6
+		6
+		6
+		6
+		6
+		
+		NOTE: 
+			as var has a functional scope.
+			
+			
+	IF YOU WANT TO STILL OUPUT AS 1 2 3 4 5 THEN 		
+			
+		 function x(){
+     			for(var i=1;i<=5;i++){
+     			    function y(i){
+       			      setTimeout(()=>{
+           		    console.log(i)
+          		  },i*1000)
+        		 }
+       		 y(i)
+    		 }
+ 		}		
+ 		x()	
+			
+			
+			
+			NOTE: 	
+				here we pass i in function parameter so it wll generate a new copy of i.n 
+			
+			
+			
+			
+			
+	to avoid this we can use let instead of var. it will point to the same reference.
+	
+	for(let i=1;i<=5;i++){
+    	setTimeout(()=>{
+     	   console.log(i)
+    	},i*1000)
+	}
+	
+	
+	O/P: 
+		1
+		2
+		3
+		4
+		5
+		
+		NOTE : 
+			 as let has a block scope so on every iteration it generates a new copy of i.
+			 
+			 
+			
+	
+	ADVANTAGES OF CLOSURE :
+		1. It is used in module pattern.
+		2. It is used in function currying.	
+		3. used in higher order functions like memoize.
+		4. It is used as data hiding and encapsulation.		
+			 
+			 
+			 
+PRIVATE VARIABLE USING  CLOSURE:(MEMOIZATION)	
+		function counter(){
+    		var count=0;
+    		return function incCount(){
+        		count++;
+        		console.log(count)
+    		}
+		}
+
+		var cnt=counter()
+		cnt()
+		cnt()
+		cnt()
+		
+		
+		
+		
+		O/P: 
+			1
+			2
+			3	
+			
+			
+			
+
+
+
+CONSTRUCTOR FUNCTION IN JAVASCRIPT : 
+
+	 
+ function Counter(){
+     var count=0;
+     this.incCounter=function () {
+         count++;
+         console.log(count);
+     }
+     this.decCounter=function (){
+         count--;
+         console.log(count)
+     }
+	 }
+	 var counter=new Counter()
+	 counter.incCounter()
+	  counter.incCounter()
+	  counter.incCounter()
+	  counter.decCounter()
+			
+			
+			
+
+	O/P: 
+		1
+		2
+		3
+		2
+			
+			
+			
+
+
+DISADVANTAGES OF CLOSURE: 
+	1. over consumption of memory when we use closures, it consumes a lot of memory.
+	
+	
+WHAT IS GARBAGE COLLECTOR: 
+	Garbage collector is the program in the browser or javascript engine which kind of freeze of the unitilize engine.
+			
+			
+			 
+=====================================================================================================================================================================
+
+	
+	
+PURE FUNCTION : 
+	A Pure Function is a function (a block of code) that always returns the same result if the same arguments are passed. It does not depend on any state or data change during a program's execution. Rather, it only depends on its input arguments.
+	
+	
+=====================================================================================================================================================================
+
+
+##################################### SOME FUNCTIONS CONCEPTS #########################################
+
+1. FUNCTION STATEMENT: // FUNCTION DECLARATION: 
+	e.g. 
+		function a(){
+			console.log("this all is functions statement");
+			
+		}
+		
+		This is known as a functionn statement.
+		
+		
+
+2. FUNCTION EXPRESSION: 
+	var b=function(){
+		console.log("hii");
+	}	
+	 
+	 This is known as a function expression.
+	 
+	 
+	
+	
+	
+	NOTE : 
+		The major difference between this two is hoisting .
+		If we called both of this function without even declaring it, then a function will give proper output but when it comes to b, 
+			then it will give Typeerror that b is not a function .
+			i.e. this b is act as a variable , not a functionn until the this line 386 executes .	 
+	
+	
+
+3. ANONYMOUS FUNCTION: 
+		Function without name is called anonymous function.
+		Anonymous functions are used , when the functions are used as a values .	
+		
+		function (){
+			//some code
+		}
+
+	but it will generate errror, we need to asssign it in some variable , 
+	we can also write anonymous function using arrrow function.
+	
+	e.g. this is IIFE (immediately invoked function expression)
+		(()=>{
+		    console.log("this is also anonymous function")
+		})()	
+
+
+
+
+4. NAMED FUNCTION EXPRESSIONS: 
+	we just need to write name for function expression. 
+	
+	var a=function xyz(){
+	    console.log("named function expression")
+	}
+	a()
+	
+
+
+	
+5. DIFFERENCE BETWEEN PARAMETERS AND ARGUMENTS : 
+	e.g. 
+	
+	function abc(a,b){   // this are known as parameters
+	
+	}
+	
+	abc(2,5);      // this are known as arguments
+	
+	
+	
+	
+6. FIRST CLASS FUNCTIONS : 
+	Passing another function inside a function or returning another function inside a function.
+	The ability of function to used as values and can be passed it as argument to another function and can be return another function is called as First 
+		Class Functions.
+	e.g.
+		
+		var b=function(param1){
+			return function(){
+			
+			}
+		}
+		
+		function xyz(){
+		
+		}
+		b(xyz);
+		
+		
+		
+
+=====================================================================================================================================================================
+
+CALLBACK FUNCTIONS : 
+	functions that are passed into another function as an argumen is called as callback function.
+	
+MAIN THREAD: 
+	javascript has only one call stack i.e. only one main thread.
+	call stack in javascript is act as a main thread.
+	if any operation is blocking call stack then it is known as blocking the main thread.
+	
+	
+	
+
+======================================================================================================================================================================
+======================================================================================================================================================================
+					
+					EVENT LOOP 
+					
+WEB APIS : 
+	this are not part of javascript : 
+		1. setTimeout
+		2. DOM APIs
+		3. fetch 
+		4. localstorage 
+		5. console
+		6. location
+		
+					
+	
+callstack
+callback queue 
+microtask queue
+
+WHAT COMES IN MICROTASK QUEUE: 
+	all the callback functions which comes through promises will go inside this microtask queue.
+	and mutation observer.
+	
+	
+	Excluding this two all goes inside callback queue(task queue)
+	
+	
+STARVATION OF THE CALLBACK QUEUE(TASK QUEUE): 
+	suppose microtaskk queue have many tasks in it , then callback queue is waiting to complete tasks inside microtask queue, 
+	so this is known as starvation of callback queue.	
+	
+	
+	
+	 
+
+======================================================================================================================================================================
+======================================================================================================================================================================
+
+
+HIGHER ORDER FUNCTION : 
+	a function which takes another function as an argument or returns a function from it, is known as Higher Order Function.
+	
+	e.g.
+		function x(){
+			console.log("hello world");
+		}	
+		
+		function y(x){
+			x();
+		}
+		
+		
+		Note : 
+			Here y is the higher order function and x is the callback function.
+	
+	
+	
+	
+	IMPORTANT PROGRAMMES : 
+		const radius=[4,6,3,2,7]
+
+		const area=(r)=>{
+  		  return Math.PI*r*r;
+		}
+		const calculate=(radius,logic)=>{
+		    const output=[]
+  		  for(let i=0;i<radius.length;i++){
+  		      output.push(area(radius[i]))
+   		 }
+   		 return output;
+		}
+
+		console.log(calculate(radius,area))
+		console.log(radius.map(area))
+		
+		
+		O/P.: SAME FOR BOTH
+		
+		
+		
+			
+			
+		FOR ITERATING ALL THE ARRAYS IN PROGRAM WE USE PROTOTYE AS GIVEN BELOW : 
+		
+		
+		const radius=[4,6,3,2,7]
+
+		const area=(r)=>{
+ 		   return Math.PI*r*r;
+		}
+ 		Array.prototype.calculate=function(logic){
+   		 const output=[]
+    		for(let i=0;i<this.length;i++){
+    		    output.push(area(this[i]))
+    		}
+   		 return output;
+		}
+
+		console.log(radius.calculate(area))
+		console.log(radius.map(area))
+	
+	
+	
+	
+	
+	NOTE : MAP , FILTER AND REDUCE ARE ALSO HIGHER ORDER FUNCTIONS.
+	
+	
+
+======================================================================================================================================================================
+======================================================================================================================================================================
+
+
+MAP , FILTER, REDUCE : 
+
+1. MAP : 
+	If we want to transform the whole array on certain condition then we used map.
+	it returns whole array.
+	
+	e.g.
+		const arr=[2,4,56,3,2]
+		function double(x){
+			return x*2;
+		}
+		const output=arr.map(double)
+		console.log(output);
+
+
+
+2. FILTER: 
+	filter used to return only perticular values depending on condition.
+	it only return array of perticular value which match condition.
+	
+	
+	e.g.
+		const ar=[3,4,6,3,3]
+
+		const double=(d)=>{
+  		  return d*2;
+		}
+
+		console.log(ar.filter((e)=>e>3))
+	
+	O/P: 
+		[ 4, 6 ]
+
+
+
+
+3. REDUCE : 
+	it will return single value depending on condition.
+	
+	
+	const ar=[3,4,6,3,3]
+
+	const op=ar.reduce((acc, current)=>{
+	    return acc+current
+	})
+	console.log(op)
+	
+	
+	
+	FOR FINDING MAX IN ARRAY : 
+		const ar=[233,45,63,3,34]
+
+		const op=ar.reduce((acc, current)=>{
+			if(current>acc){
+        			acc=current;
+    			}
+			return acc;
+		},0)
+		console.log(op)
+		
+		
