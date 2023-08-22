@@ -668,7 +668,153 @@ let obj2={...obj};     //this is also deep copy
 obj2.fname="saurabh"
 console.log(obj, obj2)
 
+===================================================================================================================================================
+
+
+## DELEGATION IN JAVASCRIPT AND REACTJS : 
+
+IN JAVASCRIPT : 
+	 instead of adding eventlistener to each child , we can add event listener to its parent element only.
+
+THIS IS INDEX.HTML
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="parent-ul">
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+    </ul>
+    <script src="index.js"></script>
+  </body>
+</html>
 
 
 
-		
+THIS IS INDEX.JS
+let parentUl = document.getElementById("parent-ul");
+parentUl.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    console.log(e.target.textContent);
+  }
+});
+
+
+
+
+
+
+
+
+FOR REACT JS 
+
+import React from "react";
+import { useEffect } from "react";
+function App() {
+  useEffect(() => {
+    const handleDelegatedClick = (event) => {
+      if (event.target.tagName === "LI") {
+        console.log(event.target.textContent);
+      }
+    };
+
+    const parentUl = document.getElementById("parent-ul");
+    parentUl.addEventListener("click", handleDelegatedClick);
+
+    return () => {
+      parentUl.removeEventListener("click", handleDelegatedClick);
+    };
+  }, []);
+  return (
+    <ul id="parent-ul">
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+    </ul>
+  );
+}
+
+export default App;
+
+
+
+
+===================================================================================================================================================
+
+IMPLEMENTATION OF PROMISE ALL : 
+
+	function showtext(text, time){
+    	return new Promise((resolve, reject)=>{
+      	  setTimeout(()=>{
+            resolve(text)
+      	  },time)
+    	})
+	}
+
+
+	// Promise.all([showtext("hello",1000), Promise.resolve("hiii")]).then((val)=>console.log(val))
+
+	function myPromiseall(promises){
+ 	           let result=[]
+
+  	  return new Promise((resolve, reject)=>{
+  	      promises.forEach((p,index)=>{
+    	        p.then((res)=>{
+      	          result.push(res);
+         	       if(index===promises.length-1){
+          	          resolve(result)
+            	    }
+          	  }).catch((error)=>{
+           	     reject(error)
+	            })
+       	 })
+   	 })
+	}
+	myPromiseall([showtext("hello",1000), Promise.resolve("hiii")]).then((val)=>console.log(val))
+
+
+
+===================================================================================================================================================
+
+## DEBOUNCIING : 
+	Debouncing means adding timeout to the perticular event. 
+********************DEBOUNCING******************  
+  const debounce=(cb, d)=>{
+        let timer;
+        return function (...args){
+            if(timer) clearTimeout(timer);
+            timer=setTimeout(()=>{
+               cb(...args) 
+            },d)
+        }
+    }
+    
+    const handleChange=debounce((e)=>{
+        console.log(e.target.value)
+    },1000)
+
+
+
+===================================================================================================================================================
+
+
+TO FIND LARGEST AND SECONDALARGEST IN ARRAY 
+
+const arr=[12,35,1,10,34,1]
+let largest=Number.NEGATIVE_INFINITY;
+let secondLarge=Number.NEGATIVE_INFINITY;
+for(let i=0;i<arr.length;i++){
+    if(arr[i]>largest){
+        secondLarge=largest;
+        largest=arr[i]
+    }
+    else if(arr[i]!=largest && arr[i]>secondLarge){
+        secondLarge=arr[i]
+    }
+}
+console.log(largest, secondLarge)
