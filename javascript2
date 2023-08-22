@@ -648,5 +648,27 @@ MAP , FILTER, REDUCE :
 			return acc;
 		},0)
 		console.log(op)
-		
+
+
+===================================================================================================================================================
+## SHALLOW COPY AND DEEP COPY : 
+	shallow copy means it will reference to the same object . 
+	Deep copy creates new reference.
+
+
+let obj={
+    
+    fname:"Akshay",
+    lname:"Gawade"
+}
+
+let obj3=obj  //this is shallow copy 
+let obj2={...obj};     //this is also deep copy
+// let obj2=Object.assign({},obj)     this is deep copy
+obj2.fname="saurabh"
+console.log(obj, obj2)
+
+
+
+
 		
