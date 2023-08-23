@@ -66,3 +66,31 @@ fun(5)  // arguments
             console.log(callback())
          }
          second(fun);
+===================================================================================================================================================
+
+CURRYING : 
+   instead of passing all parameters in single bracket. we can seperate it using currying : 
+
+   function sum(a){
+      return function(b){
+         return a+b;
+      }
+   }
+
+   sum(2)(4)
+
+    O/P : 6 
+
+
+
+
+INFINITE CURRYING : 
+   function f(a){
+    return function (b){
+        if(b) return f(a+b)
+        return a
+    }
+}
+console.log(f(4)(4)(2)())
+
+// OP : 10
