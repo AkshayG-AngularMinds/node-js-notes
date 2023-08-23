@@ -40,3 +40,29 @@ IIFE: IMMEDIATELY INVOKED FUNCTION EXPRESSION:
     (function(num){
       console.log("alo", num*num)
     })(5)
+
+
+
+
+5. ARGUMENTS AND PARAMETERS: 
+function fun(num){    //params
+   return num*num;
+}
+
+fun(5)  // arguments
+
+
+
+
+
+6. CALLBACK FUNCTION : 
+      callback function is a function passed into another function as an argument.
+
+      e.g. 
+         function fun(){
+            return 10;
+         }
+         function second(callback){
+            console.log(callback())
+         }
+         second(fun);
