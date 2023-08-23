@@ -472,5 +472,28 @@ POLYFILLS FOR FILTER :
 	  
 =================================================================================================================================================================
 =================================================================================================================================================================
-	                 	
+
+
+POLYFILLS FOR REDUCE : 
+	     
+	let arr=[3,4,5,67]
+
+	// let sum=arr.reduce((acc, curr, i, arr)=>{
+	//     return acc+curr;
+	// },0)
+	// console.log(sum)
+
+	Array.prototype.myReduce=function(cb, initialValue){
+    		let accumulator=initialValue;
+    		for(let i=0;i<this.length;i++){
+	        	accumulator=accumulator?cb(accumulator, this[i], i, this):this[i]
+    		}
+    		return accumulator;
+	}
+
+	let sum=arr.myReduce((acc, curr, i, arr)=>{
+    		return acc+curr;
+	},0)
+
+	console.log(sum)
 	 		 
