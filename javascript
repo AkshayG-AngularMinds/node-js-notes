@@ -421,13 +421,56 @@ In summary:
 Remember that understanding the context in which `this` is used is crucial for writing effective JavaScript code, especially when dealing with functions in different contexts or using them as event handlers. Using arrow functions can sometimes help maintain the desired behavior of `this`.
  
  
- 
- 
- 
+=================================================================================================================================================================
+=================================================================================================================================================================
+
+
+POLYFILLS FOR MAP FUNCTION (IMPLEMENTATION OF MAP FUNCTIO):
+	let arr=[3,4,5,67]
+	
+
+ 	Array.prototype.myMap=function(cb){
+    		let temp=[]
+    		for(let i=0;i<this.length;i++){
+        		temp.push(cb(this[i], i, this))
+    			}
+    		return temp;
+		}
+
+
+		// let ar2=arr.map((ar)=>{
+		//     return ar*2;
+		// })
+		// console.log(ar2)
+ 	
+	let ar2=arr.myMap((ar, i, arr)=>{
+    		return ar*2;
+	})
+	console.log(ar2)
  				
  
- 
- 
+=================================================================================================================================================================
+=================================================================================================================================================================
+
+POLYFILLS FOR FILTER : 
+	
+	let arr=[3,4,5,67]
+
+	Array.prototype.myFilter=function(cb){
+  	  let temp=[]
+   	 for(let i=0;i<this.length;i++){
+   	     if(cb(this[i], i , this))temp.push(this[i])
+ 	   }
+ 	   return temp;
+	}
+
+	let arr2=arr.myFilter((ar,i,arr)=>{
+	    return ar>4;    
+	})
+
+	console.log(arr2)
 	  
+=================================================================================================================================================================
+=================================================================================================================================================================
 	                 	
 	 		 
