@@ -1,1 +1,42 @@
-first
+========================================================JAVASCRIPT FUNCTIONS ======================================================================
+
+1. FUNCTION DECLARATION : 
+   function square(num){
+    return num*num;
+   }
+
+  this is called as function declaration or function definition or function statement.
+
+
+
+
+2. FUNCTION EXPRESSION: 
+     When we store a function inside of a variable is called as function expression.
+      e.g. 
+        var square=function(num){
+          return num*num;
+        }
+        square(5)
+
+
+
+3. FIRST CLASS FUNCTION : 
+    function can be treated as a variable is called as First Class Funtion. In this case function can be pass into another function, can be 
+      used , manipulated and also returned from those functions.
+
+      e.g.
+        function square(num){
+            return num*num;
+        }
+
+        function display(fn){
+            console.log("square is : "+fn(5))
+        }
+        display(square)
+
+
+
+IIFE: IMMEDIATELY INVOKED FUNCTION EXPRESSION: 
+    (function(num){
+      console.log("alo", num*num)
+    })(5)
