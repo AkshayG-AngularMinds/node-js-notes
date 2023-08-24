@@ -109,3 +109,37 @@ INFINITE CURRYING :
 console.log(f(4)(4)(2)())
 
 // OP : 10
+
+
+
+
+===================================================================================================================================================
+===================================================================================================================================================
+EVENT PROPAGATION:
+  1. EVENT BUBBLING : 
+      Bubbles work as down to up, so in event bubbling also functionalities works as down to up.   
+  2. EVENT CAPTURING : 
+        it will start from top .
+        for that we need to add property to the function as capture : true .
+
+        e.g. 
+        div.addEventListener("click"()=>{
+            console.log("hello");
+        },{
+          capture:true,
+        })  
+
+        
+        div.addEventListener("click"()=>{
+            console.log("hello");
+        },{
+          capture:true,
+        })
+
+
+
+
+3. EVENT DELEGATION : 
+      Event Delegation means where we add eventlistener to the parent element, instead of adding it to every child element. 
+
+    
