@@ -142,4 +142,13 @@ EVENT PROPAGATION:
 3. EVENT DELEGATION : 
       Event Delegation means where we add eventlistener to the parent element, instead of adding it to every child element. 
 
-    
+
+
+
+===================================================================================================================================================
+
+DEBOUNCING: 
+    e.g. we only run the function after user stops typing after perticular time .
+
+THROATNING:
+    e.g. we run function after every perticular time when type in input box.
