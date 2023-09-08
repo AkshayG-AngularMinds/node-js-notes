@@ -1,27 +1,33 @@
 
  
- ===========================================================================================================================================================
+ ================================================================================================================================
  ================================================================================================================================
  What is the purpose of the Map object in JavaScript? How is it different from a regular JavaScript object?0
-	Answer: The Map object in JavaScript is used to store key-value pairs where both the key and the value can be of any data type. It is different from a regular JavaScript object in that the keys in a Map can be objects or primitive data types, while in a regular object, keys are limited to strings or symbols.
+	Answer: The Map object in JavaScript is used to store key-value pairs where both the key and the value can be of any data type. 
+It is different from a regular JavaScript object in that the keys in a Map can be objects or primitive data types, while in a regular object,
+keys are limited to strings or symbols.
 
-	Additionally, Map maintains the insertion order of its elements, making it more suitable for scenarios where order matters. It also provides helpful methods like size, forEach, and clear.
+	Additionally, Map maintains the insertion order of its elements, making it more suitable for scenarios where order matters. 
+It also provides helpful methods like size, forEach, and clear.
 
 
 
 
-====================================================================================================================================================================
+========================================================================================================================================
 
 Explain the concept of event delegation in JavaScript.
 
-	Answer: Event delegation is a technique where instead of attaching an event listener to each individual element, you attach a single event listener to a parent element. The events are then handled based on the target (the element that triggered the event) and propagated up through the DOM tree.
+	Answer: Event delegation is a technique where instead of attaching an event listener to each individual element, you attach a single event 
+listener to a parent element. The events are then handled based on the target (the element that triggered the event) and propagated up through the
+DOM tree.
 
-	This technique is useful when you have a large number of elements to which you want to attach the same event, as it reduces memory consumption and simplifies event management.
+	This technique is useful when you have a large number of elements to which you want to attach the same event, as it reduces memory
+consumption and simplifies event management.
  
  
  
  
- ==================================================================================================================================================================
+ =================================================================================================================================================
  
  
  let & const declarations are hoisted or not ? 
@@ -34,13 +40,14 @@ Explain the concept of event delegation in JavaScript.
 			
 			It happens before execution of single line .
 			
-			==> that means hoisting is happens here also but in case of let and const it allocated space in script space not in global space.
+			==> that means hoisting is happens here also but in case of let and const it allocated space in script space not in 
+				global space.
 			
 			And in case of var it allocates memory in global space .
 
  		
  		
-==================================================================================================================================================================
+=================================================================================================================================================
 
  TEMPORAL DEAD ZONE : 
  	Answer : 
@@ -52,7 +59,7 @@ Explain the concept of event delegation in JavaScript.
  		 but in case of let and const it should not available in window object.
  		 
  		 
- 		 ==================================================================================================================================================================
+ 		 ===========================================================================================================================
  		 
 
 Syntax error , reference error and Type error : 
@@ -100,7 +107,7 @@ Syntax error , reference error and Type error :
 		 
 		 
 		 
-====================================================================================================================================================================
+====================================================================================================================================
 
 block in javascript : 
 	 group of multiple statements can be used in a place where javascript expects a single statement.
@@ -185,11 +192,12 @@ Shadowing in javscript:
 	
 	
 
-====================================================================================================================================================================
+===========================================================================================================================================
 
 CLOSURES : 
 	closure is a combination of functions and its lexical scope bundle together.
-	each and every functions in javascript has access to its outer lexical environment. Even if it is executed in other scope then also it remembers it outer lexical environment.
+	each and every functions in javascript has access to its outer lexical environment. Even if it is executed in other scope then also it
+remembers it outer lexical environment.
 	function x(){
 		var a=22;
 		function y(){
@@ -200,7 +208,8 @@ CLOSURES :
 	x();
 	
 	NOTE : 
-		when this code gets executed it must go to the y function and it should check for the a variable inside its local scope, if it is not available in local scope then it goes to its parent scope( i.e. lexical scope ).
+		when this code gets executed it must go to the y function and it should check for the a variable inside its local scope,
+if it is not available in local scope then it goes to its parent scope( i.e. lexical scope ).
 		
 		
 		
@@ -357,15 +366,16 @@ WHAT IS GARBAGE COLLECTOR:
 			
 			
 			 
-=====================================================================================================================================================================
+================================================================================================================================================
 
 	
 	
 PURE FUNCTION : 
-	A Pure Function is a function (a block of code) that always returns the same result if the same arguments are passed. It does not depend on any state or data change during a program's execution. Rather, it only depends on its input arguments.
+	A Pure Function is a function (a block of code) that always returns the same result if the same arguments are passed.
+It does not depend on any state or data change during a program's execution. Rather, it only depends on its input arguments.
 	
 	
-=====================================================================================================================================================================
+================================================================================================================================================
 
 
 ##################################### SOME FUNCTIONS CONCEPTS #########################################
@@ -444,8 +454,8 @@ PURE FUNCTION :
 	
 6. FIRST CLASS FUNCTIONS : 
 	Passing another function inside a function or returning another function inside a function.
-	The ability of function to used as values and can be passed it as argument to another function and can be return another function is called as First 
-		Class Functions.
+	The ability of function to used as values and can be passed it as argument to another function and can be return another function is
+called as First Class Functions.
 	e.g.
 		
 		var b=function(param1){
@@ -462,7 +472,7 @@ PURE FUNCTION :
 		
 		
 
-=====================================================================================================================================================================
+==============================================================================================================================================
 
 CALLBACK FUNCTIONS : 
 	functions that are passed into another function as an argumen is called as callback function.
@@ -475,8 +485,8 @@ MAIN THREAD:
 	
 	
 
-======================================================================================================================================================================
-======================================================================================================================================================================
+==============================================================================================================================================
+==============================================================================================================================================
 					
 					EVENT LOOP 
 					
@@ -511,8 +521,8 @@ STARVATION OF THE CALLBACK QUEUE(TASK QUEUE):
 	
 	 
 
-======================================================================================================================================================================
-======================================================================================================================================================================
+==========================================================================================================================================
+==========================================================================================================================================
 
 
 HIGHER ORDER FUNCTION : 
@@ -585,8 +595,8 @@ HIGHER ORDER FUNCTION :
 	
 	
 
-======================================================================================================================================================================
-======================================================================================================================================================================
+===========================================================================================================================================
+===========================================================================================================================================
 
 
 MAP , FILTER, REDUCE : 
