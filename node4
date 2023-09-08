@@ -47,13 +47,14 @@ CLI (COMMAND LINE INTERFACE) : BUILDING CLI:
 
 
 
-=====================================><==============================================================================================================================
+=====================================><==========================================================================================================
 
 
 CLUSTER MODULE:
 	we know that node is a single threaded application.
 	No matter how many cores you have, node only uses single core of your CPU.
-	This is fine for I/O operations but if the code has long running and CPU intensive operations, your application might struggle from a perfomance point of view.
+	This is fine for I/O operations but if the code has long running and CPU intensive operations, your application might struggle from a 
+perfomance point of view.
 	
 	for avoid this issue node introduce cluster module.
 	
@@ -62,7 +63,9 @@ CLUSTER MODULE:
 	All created worker share the same worker port.	
  
  	e.g. WITHOUT cluster module .
- 		suppose our applications have two routes , first route is taken 3 ms for fetching data and second route is taking 4 seconds for fetching data , then if we again refreshh first route then first route also takes 4 to 5 secondds or fetching data , so to avoid this we use cluste model .
+ 		suppose our applications have two routes , first route is taken 3 ms for fetching data and second route is taking 4 seconds for
+fetching data , then if we again refreshh first route then first route also takes 4 to 5 secondds or fetching data , so to avoid this we use 
+cluster model .
  		
  		e.g. without cluster module 
  			const http=require("http");
@@ -125,7 +128,7 @@ CLUSTER MODULE:
  			NOTE : HERE IT WILL NOT AFFECT ON / route as we use cluster.
  			
  		
- ========================================================================================================================================================
+ =============================================================================================================================================
  
  WORKER THREAD MODULE: 
  	The worker thread module enables the use of threads that execute the Javascript in parallel.
@@ -151,7 +154,7 @@ CLUSTER MODULE:
  				}
  				else if(req.url==="/slow-page"){
  					const worker = new Worker("./worker-threads.js");
- 					worker.on("message", (j)=>{                                  //for getting message in index.js from worker-threads.js
+ 					worker.on("message", (j)=>{                          //for getting message in index.js from worker-threads.js
  						res.writeHead(200,{"Content-Type":"text/plain"})
  						res.end(`slow page ${j}`)
  					})
