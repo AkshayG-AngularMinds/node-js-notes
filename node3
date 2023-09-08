@@ -81,7 +81,9 @@ CALL STACK :
 	greeting();
 	
 	NOTE :
-		first it will push greeting to the stack , and then it pushes sayhi function to the stack , after execution of sayhi, it will push sayhi to outside of the stack, all the variables inside sayhi function are destroyed, still greeting function is inside the stack, again after complete execution of greeting , this also push greeting function outside the stack.
+		first it will push greeting to the stack , and then it pushes sayhi function to the stack , after execution of sayhi, 
+it will push sayhi to outside of the stack, all the variables inside sayhi function are destroyed, still greeting function is inside the stack,
+again after complete execution of greeting , this also push greeting function outside the stack.
 		
 		this is called as call stack.
 		
@@ -95,7 +97,8 @@ TASK QUEUE:
 
 
 EVENT LOOP: 
-	1. Javascript has a runtime model based on an event loop, which is responsible for executing code, collecting and processing events and executing queued sub-tasks .
+	1. Javascript has a runtime model based on an event loop, which is responsible for executing code, collecting and processing events and
+executing queued sub-tasks .
 	2. The event loop pushes the task from the task queue to the call stack.
 	3. setTimeout(func1, 0) can be used to defer (stop) a function until all the pending task have been executed.
 	 
