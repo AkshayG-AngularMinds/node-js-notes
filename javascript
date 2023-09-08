@@ -30,9 +30,12 @@
 	 		
 	 	
 	 	NOTE: 
-	 		Here when execution starts it creates global execution context in call stack. It will first print start in the console, then it will goes to the timeout and it throws that settimeout funtion in the web apis environment, than it print end in the console and then global execution context destroy
+	 		Here when execution starts it creates global execution context in call stack. It will first print start in the console,
+then it will goes to the timeout and it throws that settimeout funtion in the web apis environment, than it print end in the console and then global 
+execution context destroy
 	 		.
-	 		Then after completion of 5 seconds, it will push the callback function to the callback queue, then EVENT LOOP throws this function inside callback queue to th call stack and then again global execution context starts. And after all execution it gets destroyed.
+	 		Then after completion of 5 seconds, it will push the callback function to the callback queue, then EVENT LOOP throws this
+function inside callback queue to th call stack and then again global execution context starts. And after all execution it gets destroyed.
 	 		
 	 	
 	 	
@@ -46,7 +49,8 @@
 	 	
 	 	
 	 	NOTE : 
-	 		 Suppose if microtask queue have more tasks , then until completion of microtask queue it will not execute the processes of callback queue and 
+	 		 Suppose if microtask queue have more tasks , then until completion of microtask queue it will not execute the processes of
+callback queue and 
 	 		 it takes more time ,so this process is known as STARVATION of the callback queue.
 	 		 
 	 		 
@@ -70,7 +74,8 @@
 	 	
 	                 
 	                 NOTE: 
-	                 	If we write arrow function instead of normal function then it will treated as a variable and it also returns undefined.
+	                 	If we write arrow function instead of normal function then it will treated as a variable and it also returns 
+			undefined.
 	                 	
 	                 	
 	           
@@ -92,7 +97,9 @@
  			
  			
  			NOTE : 
- 				here first it will search value of b in local environment i.e. in hii function, if it is not found then it will go to its parent environment i.e. LEXICAL environment, if again value is not found then again it will check in its parent environment, i.e. here in global environment.
+ 				here first it will search value of b in local environment i.e. in hii function, if it is not found then it will go
+to its parent environment i.e. LEXICAL environment, if again value is not found then again it will check in its parent environment, 
+i.e. here in global environment.
  				
  				
  				THIS CHAINING IS CALLED AS SCOPE CHAIN..
@@ -102,7 +109,9 @@
  				
 
 ############ WHAT IS CLOSURE: 
-		Closures are a fundamental concept in JavaScript that occur when a function is defined within another function and the inner function has access to 		the outer function's variables and scope chain. In simpler terms, a closure allows a function to "remember" its lexical scope even when it is executed outside of that scope.
+		Closures are a fundamental concept in JavaScript that occur when a function is defined within another function and the inner
+function has access to 	the outer function's variables and scope chain. In simpler terms, a closure allows a function to "remember" its 
+lexical scope even when it is executed outside of that scope.
 
 To understand closures better, consider the following example: 				
  				
@@ -124,7 +133,8 @@ To understand closures better, consider the following example:
  				
 
 ########## DIFFERENCES BETWEEN NULL AND UNDEFINED: 
-	In JavaScript, `null` and `undefined` are two distinct values that represent the absence of a meaningful value, but they have different meanings and use cases.
+	In JavaScript, `null` and `undefined` are two distinct values that represent the absence of a meaningful value, but they have different
+meanings and use cases.
 
 		1. **undefined:**
  		   - When a variable is declared but not assigned a value, it automatically gets the value `undefined`.
@@ -158,25 +168,33 @@ const obj2 = { prop: null }; // explicitly setting prop to null
  Here's a summary of the key differences:
 
   - `undefined` is automatically assigned to variables that are declared but not initialized, while `null` must be explicitly assigned.
-  - `undefined` represents the absence of a value due to lack of assignment or an uninitialized state, while `null` represents an intentional lack of value.
-  - `undefined` is often used to indicate that something is not present or not available, whereas `null` is often used to represent the absence of a valid value.
+  - `undefined` represents the absence of a value due to lack of assignment or an uninitialized state, while `null` represents an intentional 
+lack of value.
+  - `undefined` is often used to indicate that something is not present or not available, whereas `null` is often used to represent the absence 
+of a valid value.
 
-In most cases, you don't need to assign `null` explicitly, as JavaScript will handle uninitialized variables with `undefined`. However, using `null` can be useful when you want to explicitly indicate the absence of a value, especially when you are working with objects and need to differentiate between "not set" and "set to null." 				
+In most cases, you don't need to assign `null` explicitly, as JavaScript will handle uninitialized variables with `undefined`. 
+
+However, using `null` can be useful when you want to explicitly indicate the absence of a value, especially when you are working with 
+objects and need to differentiate between "not set" and "set to null." 				
  
  
- =================================================================================================================================================================
+ =================================================================================================================================================
  
  What are Promises and async/await in JavaScript? How do they simplify asynchronous programming?
- 	Promises and async/await are modern JavaScript features that simplify asynchronous programming and make it easier to work with asynchronous tasks like API calls, file I/O etc.
+ 	Promises and async/await are modern JavaScript features that simplify asynchronous programming and make it easier to work with asynchronous
+tasks like API calls, file I/O etc.
  	
  	1. Promises:
-		Promises are objects representing the eventual completion (or failure) of an asynchronous operation and its resulting value. They provide a clean and structured way to handle asynchronous tasks.
+		Promises are objects representing the eventual completion (or failure) of an asynchronous operation and its resulting value.
+They provide a clean and structured way to handle asynchronous tasks.
 
 	Promises have three states:
 		Pending: The initial state. The promise is still pending and hasn't been fulfilled or rejected yet.
 		Fulfilled: The asynchronous operation completed successfully, and the promise now holds the resulting value.
 		Rejected: The asynchronous operation encountered an error, and the promise holds the reason for the rejection.
-		Promises simplify asynchronous programming by allowing you to chain multiple asynchronous operations using .then() and handle errors using .catch().
+		Promises simplify asynchronous programming by allowing you to chain multiple asynchronous operations using .then() and 
+handle errors using .catch().
 
 Example using Promises:
  
@@ -202,18 +220,20 @@ Example using Promises:
  
  
  
- ============================================================================================================================================================================================================================================
+ ============================================================================================================================================
  
 Describe the differences between let, const, and var in terms of scope and hoisting.
  
  
-The differences between `let`, `const`, and `var` in terms of scope and hoisting are significant, and understanding them is essential for writing clean and predictable JavaScript code.
+The differences between `let`, `const`, and `var` in terms of scope and hoisting are significant, and understanding them is essential for 
+writing clean and predictable JavaScript code.
 
 1. **var:**
    - `var` was the original way to declare variables in JavaScript, introduced in ECMAScript 5 (ES5).
    - Variables declared with `var` are function-scoped, meaning they are only accessible within the function where they are declared.
    - If a `var` variable is declared outside any function, it becomes a global variable, accessible throughout the entire program.
-   - Hoisting occurs with `var`, which means that variable declarations are moved to the top of their containing scope during the compilation phase, while the initial assignment remains in place.
+   - Hoisting occurs with `var`, which means that variable declarations are moved to the top of their containing scope during the compilation
+phase, while the initial assignment remains in place.
 
    Example with `var`:
    ```javascript
@@ -228,7 +248,8 @@ The differences between `let`, `const`, and `var` in terms of scope and hoisting
 
 2. **let:**
    - `let` was introduced in ECMAScript 6 (ES6) to address some issues with `var`.
-   - Variables declared with `let` have block scope, which means they are only accessible within the block (i.e., any set of curly braces) where they are defined.
+   - Variables declared with `let` have block scope, which means they are only accessible within the block (i.e., any set of curly braces) 
+where they are defined.
    - Unlike `var`, `let` variables are not hoisted to the top of their scope, so you cannot access them before their declaration.
 
    Example with `let`:
@@ -265,15 +286,17 @@ In summary:
  
  
  
- ==================================================================================================================================================================
+ ============================================================================================================================================
  
  What are the differences between map, forEach, filter, and reduce array methods? Provide use cases for each.
  
- `map`, `forEach`, `filter`, and `reduce` are important array methods in JavaScript that allow you to manipulate arrays in different ways. Here are the differences between them along with their use cases:
+ `map`, `forEach`, `filter`, and `reduce` are important array methods in JavaScript that allow you to manipulate arrays in different ways. 
+Here are the differences between them along with their use cases:
 
 1. **`map`:**
    - `map` is used to transform each element of an array into a new array based on a given function.
-   - It creates a new array with the same length as the original array, where each element is the result of applying the provided function to the corresponding element of the original array.
+   - It creates a new array with the same length as the original array, where each element is the result of applying the provided function
+to the corresponding element of the original array.
 
    Use case:
    ```javascript
@@ -288,7 +311,8 @@ In summary:
    ```
 
 2. **`forEach`:**
-   - `forEach` is used to iterate over an array and perform a specific action or side effect for each element. It does not create a new array but instead modifies the existing array or performs some side effects.
+   - `forEach` is used to iterate over an array and perform a specific action or side effect for each element. It does not create a new array 
+but instead modifies the existing array or performs some side effects.
 
    Use case:
    ```javascript
@@ -316,7 +340,8 @@ In summary:
 
 4. **`reduce`:**
    - `reduce` is used to "reduce" an array into a single value by applying a function to each element of the array.
-   - It takes an accumulator and each element of the array, and it returns the accumulated value after applying the provided function to all elements.
+   - It takes an accumulator and each element of the array, and it returns the accumulated value after applying the provided function to all 
+elements.
 
    Use case:
    ```javascript
@@ -337,14 +362,17 @@ In summary:
 - `reduce` is used to "reduce" an array into a single value by applying a function to each element and accumulating the results.
  
  
- ====================================================================================================================================================================
+ ================================================================================================================================================
  
  How does this work in JavaScript? Provide examples of how it can change in different contexts?
  
- The behavior of `this` in JavaScript can change depending on the context in which it is used. The value of `this` is determined dynamically during the runtime based on how a function is called, rather than how it is defined. The way `this` behaves in different contexts is one of the aspects that can lead to confusion for developers. Let's explore some common scenarios:
+ The behavior of `this` in JavaScript can change depending on the context in which it is used. The value of `this` is determined dynamically 
+during the runtime based on how a function is called, rather than how it is defined. The way `this` behaves in different contexts is one of the 
+aspects that can lead to confusion for developers. Let's explore some common scenarios:
 
 1. **Global context:**
-   When `this` is used in the global context (outside of any function or object), it refers to the global object, which is the `window` object in browsers and the `global` object in Node.js.
+   When `this` is used in the global context (outside of any function or object), it refers to the global object, which is the `window` object
+in browsers and the `global` object in Node.js.
 
    Example:
    ```javascript
@@ -353,7 +381,8 @@ In summary:
    ```
 
 2. **Function context:**
-   When `this` is used inside a regular function, its value depends on how the function is called. If the function is called as a standalone function (not attached to an object), `this` will point to the global object (in non-strict mode) or be `undefined` (in strict mode).
+   When `this` is used inside a regular function, its value depends on how the function is called. If the function is called as a standalone 
+	function (not attached to an object), `this` will point to the global object (in non-strict mode) or be `undefined` (in strict mode).
 
    Example:
    ```javascript
@@ -380,7 +409,8 @@ In summary:
    ```
 
 4. **Constructor context:**
-   When a function is used as a constructor (invoked with the `new` keyword), `this` refers to the newly created instance of the object that the constructor is creating.
+   When a function is used as a constructor (invoked with the `new` keyword), `this` refers to the newly created instance of the object that
+the constructor is creating.
 
    Example:
    ```javascript
@@ -402,7 +432,8 @@ In summary:
    ```
 
 6. **Arrow function context:**
-   Arrow functions have a different behavior for `this` compared to regular functions. In arrow functions, `this` retains the value of the enclosing context lexically, which means it captures the `this` value of the surrounding scope.
+   Arrow functions have a different behavior for `this` compared to regular functions. In arrow functions, `this` retains the value of the
+enclosing context lexically, which means it captures the `this` value of the surrounding scope.
 
    Example:
    ```javascript
@@ -418,14 +449,16 @@ In summary:
    obj.greet();
    ```
 
-Remember that understanding the context in which `this` is used is crucial for writing effective JavaScript code, especially when dealing with functions in different contexts or using them as event handlers. Using arrow functions can sometimes help maintain the desired behavior of `this`.
+	Remember that understanding the context in which `this` is used is crucial for writing effective JavaScript code, especially when dealing
+with functions in different contexts or using them as event handlers. Using arrow functions can sometimes help maintain the desired behavior of 
+`this`.
  
  
-=================================================================================================================================================================
-=================================================================================================================================================================
+==============================================================================================================================================
+==============================================================================================================================================
 
 
-POLYFILLS FOR MAP FUNCTION (IMPLEMENTATION OF MAP FUNCTIO):
+POLYFILLS FOR MAP FUNCTION (IMPLEMENTATION OF MAP FUNCTION):
 	let arr=[3,4,5,67]
 	
 
@@ -449,8 +482,8 @@ POLYFILLS FOR MAP FUNCTION (IMPLEMENTATION OF MAP FUNCTIO):
 	console.log(ar2)
  				
  
-=================================================================================================================================================================
-=================================================================================================================================================================
+==============================================================================================================================================
+==============================================================================================================================================
 
 POLYFILLS FOR FILTER : 
 	
@@ -470,8 +503,8 @@ POLYFILLS FOR FILTER :
 
 	console.log(arr2)
 	  
-=================================================================================================================================================================
-=================================================================================================================================================================
+=================================================================================================================================================
+=================================================================================================================================================
 
 
 POLYFILLS FOR REDUCE : 
