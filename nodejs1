@@ -1,12 +1,16 @@
 
 1. ECMA Script: 
-	ECMAScript (/ˈɛkməskrɪpt/; ES) is a standard for scripting languages, including JavaScript, JScript, and ActionScript. It is also best known as a JavaScript standard intended to ensure the interoperability of web pages across different web browsers. It is standardized by Ecma International in the document ECMA-262.
-	In the early days, for single websites developer needs to write code multiple times , for different browsers, so to avoid this , ECMA script in used.
+	ECMAScript (/ˈɛkməskrɪpt/; ES) is a standard for scripting languages, including JavaScript, JScript, and ActionScript. It is also best 
+known as a JavaScript standard intended to ensure the interoperability of web pages across different web browsers. It is standardized by Ecma 
+International in the document ECMA-262.
+	In the early days, for single websites developer needs to write code multiple times , for different browsers, so to avoid this , 
+ECMA script in used.
 	
 	
 2. JAVASCRIPT ENGINES:
 	Javascript code we write can not be understood by the computer.
-	So the javascript engine is the program that converts javascript code that developers write into machine code that allows computer to perform specific task.
+	So the javascript engine is the program that converts javascript code that developers write into machine code that allows computer
+to perform specific task.
 	
 	
 3. WHAT IS NODE JS:
@@ -18,7 +22,7 @@
 	
 	
 
-==================================================> MODULES <================================================================================================
+==================================================> MODULES <===================================================================================
 
 
 4. MODULES IN NODE JS : 
@@ -31,7 +35,7 @@
 		3. Third party modules : Modules written by other developers that we can use in our application.	
 		
 
-===================================================> LOCAL MODULES <=================================================================================
+===================================================> LOCAL MODULES <=============================================================================
 
 	
 		Before modules code is executed node js is wrapped it in IIFE 
@@ -103,7 +107,8 @@
 			console.log(newSuperhero.getName());      // Batman       => it still displays batman 
 			
 			
-			when we write require() two times for same file , it will cached only single time , second time it will not goes to that file 
+			when we write require() two times for same file , it will cached only single time , second time it will not goes to that 
+			 file 
 			
 			
 			if we want to change it then in super-hero.js when exporting export just class as SuperHero and not SuperHero("Superman") .
@@ -189,7 +194,8 @@
 	
 	
 NOTE: 
-	node index.js command only compile code one time, if we made any changes in file then we need to again run our node application using node index.js command ,
+	node index.js command only compile code one time, if we made any changes in file then we need to again run our node application using 
+node index.js command ,
     to avoid this we use watch ,
     	COMMAND: 	
     		node --watch index
@@ -197,7 +203,7 @@ NOTE:
     		
     		
    
-===================================================> BUILT-IN MODULES <=================================================================================	
+===================================================> BUILT-IN MODULES <===========================================================================
 	
 	
 BUILT IN MODULES :
@@ -303,9 +309,11 @@ callback funcction:
 		
 		
 		e.g.  streming a video online
-			If your connection is fast enough, the speed of the stream will be fast enough to instantly fill up the buffer and send it out for processing.
+			If your connection is fast enough, the speed of the stream will be fast enough to instantly fill up the buffer and send 
+it out for processing.
 			That will repeat till the stream is finished.
-			If your connection is slow, after processing the first chunk of data that arrived, the video player will display a loading spinner           which indicates it is waiting for more data to arrive.
+			If your connection is slow, after processing the first chunk of data that arrived, the video player will display a loading 
+spinner which indicates it is waiting for more data to arrive.
 			Once the buffer is filled up and data is processed, the video player shows the video.
 			
 			
@@ -412,7 +420,8 @@ callback funcction:
 		
 		
 ########5. HTTP MODULE:
-		in web server there is a communication between client and server, but what type of request send by client is can not understand by server and also what kind of response send to the server can not understand by client.
+		in web server there is a communication between client and server, but what type of request send by client is can not understand 
+by server and also what kind of response send to the server can not understand by client.
 		The client sends an HTTP requests and the server responds with a HTTP response.
 		
 		
