@@ -152,3 +152,11 @@ DEBOUNCING:
 
 THROATNING:
     e.g. we run function after every perticular time when type in input box.
+
+===================================================================================================================================================
+
+THROATLING IN JAVASCRIPT: 
+      suppose we have added button in our component,and onclick of that button there is an API call, but if user clicks more times on that button
+then api calls more times , so for that we use throatning, its like debouncing, we will add certain time in that throatling so that it will work only
+after that certain time.
+
